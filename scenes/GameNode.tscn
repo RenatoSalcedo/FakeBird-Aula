@@ -1,0 +1,115 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/fundo.png" type="Texture" id=1]
+[ext_resource path="res://scripts/FakeBird.gd" type="Script" id=2]
+[ext_resource path="res://assets/felpudo/felpudoVoa1.png" type="Texture" id=3]
+[ext_resource path="res://assets/felpudo/felpudoVoa2.png" type="Texture" id=4]
+[ext_resource path="res://assets/felpudo/felpudoVoa3.png" type="Texture" id=5]
+[ext_resource path="res://assets/felpudo/felpudoVoa4.png" type="Texture" id=6]
+[ext_resource path="res://assets/felpudo/felpudoVoa5.png" type="Texture" id=7]
+[ext_resource path="res://assets/felpudo/felpudoVoa6.png" type="Texture" id=8]
+[ext_resource path="res://scenes/Cano.tscn" type="PackedScene" id=9]
+
+[sub_resource type="Animation" id=5]
+resource_name = "BackgroundAnim"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Fundo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -1026, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/Fundo2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1026, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 72.1874
+height = 112.036
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( 1000.21, 1.85503 )
+b = Vector2( -0.280212, 1.85503 )
+
+[sub_resource type="SegmentShape2D" id=4]
+a = Vector2( 105.828, 216.869 )
+b = Vector2( -894.324, 216.869 )
+
+[node name="GameNode" type="Node2D"]
+
+[node name="Background" type="AnimationPlayer" parent="."]
+editor/display_folded = true
+autoplay = "BackgroundAnim"
+anims/BackgroundAnim = SubResource( 5 )
+
+[node name="Fundo" type="Sprite" parent="Background"]
+position = Vector2( -650.446, 0 )
+scale = Vector2( 3.8, 3.6 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Fundo2" type="Sprite" parent="Background"]
+position = Vector2( 375.554, 0 )
+scale = Vector2( 3.8, 3.6 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="FakeBird" type="RigidBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 37.6173, -697.367 )
+z_index = 1
+mode = 2
+gravity_scale = 18.0
+script = ExtResource( 2 )
+
+[node name="FakeBirdAnim" type="AnimatedSprite" parent="FakeBird"]
+position = Vector2( 105.361, 799.344 )
+scale = Vector2( 1.4, 1.4 )
+frames = SubResource( 1 )
+frame = 3
+speed_scale = 2.0
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FakeBird"]
+position = Vector2( 115.182, 788.088 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="Limites" type="StaticBody2D" parent="."]
+editor/display_folded = true
+
+[node name="Teto" type="CollisionShape2D" parent="Limites"]
+shape = SubResource( 3 )
+
+[node name="Chao" type="CollisionShape2D" parent="Limites"]
+position = Vector2( 893.624, 1481.03 )
+shape = SubResource( 4 )
+
+[node name="Cano" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1073.55, 702.25 )
+z_index = 1
+

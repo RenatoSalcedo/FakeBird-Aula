@@ -10,6 +10,7 @@ extents = Vector2( 37.3133, 126.932 )
 extents = Vector2( 37.763, 126.99 )
 
 [node name="Cano" type="Node2D"]
+z_index = 1
 script = ExtResource( 1 )
 
 [node name="Cima" type="Sprite" parent="."]

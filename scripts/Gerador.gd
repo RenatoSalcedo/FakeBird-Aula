@@ -8,5 +8,5 @@ func _ready():
 func _on_Timer_timeout():
 	var ncano = cano.instance()
 	ncano.speed = -400
-	ncano.position = position + Vector2(0, rand_range(-500, 500))
+	ncano.position = position + Vector2(0,rand_range(-500, 500))
 	self.owner.add_child(ncano)

@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/Cano.gd" type="Script" id=1]
-[ext_resource path="res://assets/cano.png" type="Texture" id=2]
+[ext_resource path="res://assets/SM Cano.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 37.3133, 126.932 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 37.763, 126.99 )
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( -44.7559, 457.996 )
+b = Vector2( -44.7559, 1.26366 )
 
 [node name="Cano" type="Node2D"]
 z_index = 1
@@ -24,20 +28,27 @@ position = Vector2( 0, 1225 )
 scale = Vector2( 3, 8 )
 texture = ExtResource( 2 )
 
-[node name="AreaCima" type="Area2D" parent="."]
-editor/display_folded = true
+[node name="AreaCano" type="Area2D" parent="."]
 position = Vector2( 0, -1225 )
 rotation = -3.14159
 scale = Vector2( 3, 8 )
+z_index = 1
 
-[node name="CollisionShapeCima" type="CollisionShape2D" parent="AreaCima"]
+[node name="CollisionShapeCima" type="CollisionShape2D" parent="AreaCano"]
+z_index = 1
 shape = SubResource( 1 )
 
-[node name="AreaBaixo" type="Area2D" parent="."]
-editor/display_folded = true
-position = Vector2( 0, 1225 )
-scale = Vector2( 3, 8 )
-
-[node name="CollisionShapeBaixo" type="CollisionShape2D" parent="AreaBaixo"]
+[node name="CollisionShapeBaixo" type="CollisionShape2D" parent="AreaCano"]
+position = Vector2( -0.0020704, -306.25 )
+rotation = 3.14159
+z_index = 1
 shape = SubResource( 2 )
 
+[node name="Ponto" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ponto"]
+position = Vector2( 305.949, -228.649 )
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="AreaCano" to="." method="_on_AreaCano_body_entered"]
+[connection signal="body_entered" from="Ponto" to="." method="_on_Ponto_body_entered"]

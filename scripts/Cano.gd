@@ -8,12 +8,17 @@ func _ready():
 	set_process(true)
 
 func _process(delta):
-	position = (position + Vector2(self.speed * delta, 0))
+	if (scene.estado == scene.JOGANDO):
+		position = (position + Vector2(speed * delta, 0))
 	
-	if position.x < -100:
+	if (position.x < -100):
 		queue_free()
 	
-	
-func _on_body_crash(body):
-	if body.get_name() == "FakeBird":
+
+func _on_AreaCano_body_entered(body):
+	if (body.get_name() == "FakeBird"):
 		scene.kill()
+
+func _on_Ponto_body_entered(body):
+	if (body.get_name() == "FakeBird"):
+		scene.pontua()

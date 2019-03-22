@@ -13,7 +13,6 @@ onready var scoreSound = get_node("Ponto_SoundRepeat")
 onready var morte = get_node("SomMorte")
 onready var ponto = get_node("SomPonto")
 
-
 var pontos = 0
 var estado = 1
 

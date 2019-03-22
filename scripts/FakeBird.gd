@@ -10,13 +10,13 @@ func _ready():
 	set_process_input(true)
 	
 func _input(event):
-	if event.is_action_pressed("touch"):
+	if event is InputEventScreenTouch:
 		on_touch()
 
 func on_touch():
 	if (scene.estado == scene.JOGANDO):
 		PlayStop_FlySound()
-		apply_impulse(Vector2(0, 0), Vector2(0, -1000))
+		apply_impulse(Vector2(0, 0), Vector2(0, -500))
 
 func _on_FlySound_timeout():
 	play_voa.stop()

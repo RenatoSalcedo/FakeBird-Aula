@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/Cano.gd" type="Script" id=1]
 [ext_resource path="res://assets/SM Cano.png" type="Texture" id=2]
+[ext_resource path="res://assets/ring/frame_0_delay-0.25s.png" type="Texture" id=3]
+[ext_resource path="res://assets/ring/frame_1_delay-0.25s.png" type="Texture" id=4]
+[ext_resource path="res://assets/ring/frame_2_delay-0.25s.png" type="Texture" id=5]
+[ext_resource path="res://assets/ring/frame_3_delay-0.25s.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 37.3133, 126.932 )
@@ -12,6 +16,14 @@ extents = Vector2( 37.763, 126.99 )
 [sub_resource type="SegmentShape2D" id=3]
 a = Vector2( -44.7559, 457.996 )
 b = Vector2( -44.7559, 1.26366 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Cano" type="Node2D"]
 z_index = 1
@@ -49,6 +61,13 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ponto"]
 position = Vector2( 305.949, -228.649 )
 shape = SubResource( 3 )
+
+[node name="Ring" type="AnimatedSprite" parent="Ponto"]
+position = Vector2( 261.702, 0 )
+frames = SubResource( 4 )
+frame = 2
+speed_scale = 2.0
+playing = true
 
 [connection signal="body_entered" from="AreaCano" to="." method="_on_AreaCano_body_entered"]
 [connection signal="body_entered" from="Ponto" to="." method="_on_Ponto_body_entered"]

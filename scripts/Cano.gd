@@ -17,6 +17,7 @@ func _process(delta):
 
 func _on_AreaCano_body_entered(body):
 	if (body.get_name() == "FakeBird"):
+		get_node("Ponto/Ring").stop()
 		scene.kill()
 
 func _on_Ponto_body_entered(body):

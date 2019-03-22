@@ -76,13 +76,12 @@ anims/BackgroundAnim = SubResource( 1 )
 blend_times = [ "BackgroundAnim", "BackgroundAnim", 1.0 ]
 
 [node name="Fundo" type="Sprite" parent="Background"]
-position = Vector2( -174.593, 0 )
+position = Vector2( -1000, 0 )
 scale = Vector2( 3.70702, 3.6 )
 texture = ExtResource( 2 )
 centered = false
 
 [node name="Fundo2" type="Sprite" parent="Background"]
-position = Vector2( 825.407, 0 )
 scale = Vector2( 3.69668, 3.6 )
 texture = ExtResource( 3 )
 centered = false
@@ -102,7 +101,7 @@ position = Vector2( 105.361, 799.344 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )
 animation = "New Anim"
-frame = 3
+frame = 5
 speed_scale = 4.0
 playing = true
 
@@ -127,7 +126,6 @@ position = Vector2( 893.624, 1481.03 )
 shape = SubResource( 5 )
 
 [node name="Canos" type="Node2D" parent="."]
-editor/display_folded = true
 z_index = 1
 
 [node name="Cano" parent="Canos" instance=ExtResource( 9 )]
@@ -182,5 +180,4 @@ wait_time = 0.5
 [connection signal="timeout" from="Canos/Gerador/Timer" to="Canos/Gerador" method="_on_Timer_timeout"]
 [connection signal="timeout" from="TimeToReplay" to="." method="_on_TimeToReplay_timeout"]
 [connection signal="timeout" from="Morte_SoundRepeat" to="." method="_on_Morte_SoundRepeat_timeout"]
-[connection signal="timeout" from="Morte_SoundRepeat" to="." method="_on_SoundTimer_timeout"]
 [connection signal="timeout" from="Ponto_SoundRepeat" to="." method="_on_Ponto_SoundRepeat_timeout"]

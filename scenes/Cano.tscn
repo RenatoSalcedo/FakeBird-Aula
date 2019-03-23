@@ -13,9 +13,8 @@ extents = Vector2( 37.3133, 126.932 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 37.763, 126.99 )
 
-[sub_resource type="SegmentShape2D" id=3]
-a = Vector2( -44.7559, 457.996 )
-b = Vector2( -44.7559, 1.26366 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 58.1587, 224.803 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -57,15 +56,16 @@ z_index = 1
 shape = SubResource( 2 )
 
 [node name="Ponto" type="Area2D" parent="."]
+position = Vector2( 67.6287, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ponto"]
-position = Vector2( 305.949, -228.649 )
+position = Vector2( 262.578, -0.0347443 )
 shape = SubResource( 3 )
 
 [node name="Ring" type="AnimatedSprite" parent="Ponto"]
-position = Vector2( 261.702, 0 )
+position = Vector2( 263.172, 0 )
 frames = SubResource( 4 )
-frame = 2
+frame = 3
 speed_scale = 2.0
 playing = true
 
